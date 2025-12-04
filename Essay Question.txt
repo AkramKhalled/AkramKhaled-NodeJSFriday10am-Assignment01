@@ -1,0 +1,57 @@
+Q1. What is the difference between forEach and for...of? When would you use each?
+A. 
+forEach: An array method used to run a function on every element, 
+mainly for side effects (like logging or updating something). 
+You can’t use break/continue, and it’s not good with async/await because it won’t wait for promises.
+
+for...of: A loop that works with any iterable (arrays, strings, sets, maps) 
+and gives you more control. You can use break/continue/return, 
+and it’s the better choice when you need early stopping or await inside the loop.
+
+Use forEach for simple “do this for each item” tasks.
+Use for...of when you need control flow or async logic.
+
+Q2. What is hoisting and what is the Temporal Dead Zone (TDZ)? Explain with examples.
+A.
+Hoisting is JavaScript moving declarations to the top of their scope before execution.
+
+var is hoisted and initialized to undefined, so you can read it before its line (but it’s undefined).
+
+Function declarations are fully hoisted, so you can call them before they appear.
+
+TDZ (Temporal Dead Zone) is the period where let/const are in scope but cannot be accessed 
+until their declaration line runs—accessing them before that throws a ReferenceError.
+
+console.log(x); // undefined
+var x = 1;
+
+console.log(y); // ReferenceError (TDZ)
+let y = 2;
+
+Q3. What are the main differences between == and ===?
+== (loose equality) compares values after type coercion (it may convert one type to another), 
+so results can be unexpected.
+Example: 0 == "0" → true
+
+=== (strict equality) compares value and type with no coercion, so it’s safer and preferred.
+Example: 0 === "0" → false
+
+Q4. Explain how try-catch works and why it is important in async operations.
+A. 
+try...catch lets you run code in try and handle errors in catch instead of crashing the program.
+It’s important in async operations because await can throw (if a Promise rejects), 
+and try...catch lets you safely handle that failure (log it, show a message, retry, etc.).
+
+Q5. What’s the difference between type conversion and coercion? Provide examples of each.
+A. 
+Type conversion is an explicit change of a value’s type (you do it on purpose).
+Examples :
+Number("123");
+String(10);
+Boolean(0);
+
+Type coercion is an implicit type change done automatically by JavaScript during an operation.
+Example:
+"5" + 1;
+"5" - 1;
+0 == "0";
