@@ -131,7 +131,7 @@ console.log(returnKeysOfObject(objectToBeReturned));
 
 // 15. Write a function that splits a string into an array of words based on spaces.
 function splitStringIntoArrayOfWords(stringToBeSplit) {
-    return stringToBeSplit.split(" ")
+    return stringToBeSplit.trim().split(" ")
 }
 
-console.log(splitStringIntoArrayOfWords("The quick brown fox"))
+console.log(splitStringIntoArrayOfWords("  The quick brown fox"))
